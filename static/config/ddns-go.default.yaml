@@ -6,5 +6,6 @@ dnsconf:
     ipv6:
       enable: false
       gettype: cmd
-      cmd: floweye nat listproxy | grep proxy6 | head -n1 | awk '{print $5}' | grep -vE '0.0.0.0'
+# new command to get ipv6, replace wan6-line-name with yours, for example: pppoe
+      cmd: floweye nat getproxy wan6-line-name | grep v6_addr | cut -d'=' -f2
 notallowwanaccess: true
